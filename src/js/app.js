@@ -6,8 +6,8 @@ export function orderByProps(obj={}, ord=[]) {
         dummy.push({key: prop, value: obj[prop]});
     }
 
-    for (let i=0; i < ord.length; i++) { 
-        for (let j=0; j < dummy.length; j++) {   
+    for (const i in ord) { 
+        for (const j in dummy) {   
             if (ord[i] === dummy[j].key && !result.includes(dummy[j])) {
                 result.push(dummy[j]);
             }
@@ -16,7 +16,7 @@ export function orderByProps(obj={}, ord=[]) {
 
     dummy.sort((prop_a, prop_b) => prop_a.key.localeCompare(prop_b.key));
 
-    for (let i=0; i < dummy.length; i++) {   
+    for (const i in dummy) {   
         if (!result.includes(dummy[i])) {
             result.push(dummy[i]);
         }
