@@ -28,10 +28,10 @@ export function orderByProps(obj={}, ord=[]) {
 export function getSpecs(pers={}) {
     const result = [];
     
-    const { special: specs } = pers;
+    const { special: specs=[] } = pers;
 
-    for (const i in specs) {
-        const { id, name, icon, description='Описание недоступно' } = specs[i];
+    for (const spec of specs) {
+        const { id, name, icon, description='Описание недоступно' } = spec;
         result.push({
             'id': id,
             'name': name,
