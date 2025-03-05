@@ -21,7 +21,7 @@ export function orderByProps(obj={}, ord=[]) {
             result.push(prop);
         }
     }
-    console.log(result);
+    
     return result;
 }
 
