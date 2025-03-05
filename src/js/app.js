@@ -1,27 +1,27 @@
 export function orderByProps(obj={}, ord=[]) {
-    const dummy = [];
+    const props = [];
     const result = [];
 
     for (const prop in obj) {
-        dummy.push({key: prop, value: obj[prop]});
+        props.push({key: prop, value: obj[prop]});
     }
 
-    for (const i in ord) { 
-        for (const j in dummy) {   
-            if (ord[i] === dummy[j].key && !result.includes(dummy[j])) {
-                result.push(dummy[j]);
+    for (const ordPos of ord) { 
+        for (const prop of props) {   
+            if (ordPos === prop.key) {
+                result.push(prop);
             }
         }
     }
 
-    dummy.sort((prop_a, prop_b) => prop_a.key.localeCompare(prop_b.key));
+    props.sort((prop_a, prop_b) => prop_a.key.localeCompare(prop_b.key));
 
-    for (const i in dummy) {   
-        if (!result.includes(dummy[i])) {
-            result.push(dummy[i]);
+    for (const prop of props) {   
+        if (!result.includes(prop)) {
+            result.push(prop);
         }
     }
-
+    console.log(result);
     return result;
 }
 
