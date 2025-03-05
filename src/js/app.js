@@ -25,20 +25,12 @@ export function orderByProps(obj={}, ord=[]) {
     return result;
 }
 
-export function getSpecs(pers={}) {
-    const result = [];
-    
-    const { special: specs=[] } = pers;
-
-    for (const spec of specs) {
-        const { id, name, icon, description='Описание недоступно' } = spec;
-        result.push({
-            'id': id,
-            'name': name,
-            'icon': icon,
-            'description': description
-        });
-    }
-
-    return result;
+export function getSpecs(char) { // если деконструкцию включить сразу в аргумент, будет падать при undefined
+    const specs = char?.special ?? [];
+    return specs.map(({ id, name, icon, description = 'Описание недоступно' }) => ({
+        id,
+        name,
+        icon,
+        description
+    }));
 }
